@@ -1,0 +1,5 @@
+export const API_CONFIG = {
+    BASE_URL: 'http://localhost:3000/api',
+    PROXY_BASE: 'http://localhost:3000/api',
+    TIMEOUT: 60000,
+};
