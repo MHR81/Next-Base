@@ -1,0 +1,201 @@
+{
+    "common": {
+        "language": "فارسی",
+        "Taghche": "طاقچه",
+        "home": "خانه",
+        "Login": "ورود",
+        "search": "جستجو...",
+        "download": "دانلود",
+        "notifications": "اعلانات",
+        "menu": "منو",
+        "profile": "پروفایل",
+        "upload book": "بارگذاری کتاب",
+        "upload Audio": "بارگذاری صوتی",
+        "Audio books": "کتاب‌های صوتی",
+        "Electronic books": "کتاب‌های الکترونیکی",
+        "Popular Audio": "صوت‌های محبوب",
+        "Popular Books": "کتاب‌های محبوب",
+        "category": "دسته‌بندی",
+        "email": "ایمیل",
+        "code": "کد",
+        "email_address": "آدرس ایمیل",
+        "password": "رمز عبور",
+        "login": "ورود",
+        "register": "ثبت نام",
+        "logout": "خروج",
+        "forgot password?": "رمز عبور را فراموش کرده‌اید؟",
+        "Create an account": "ایجاد حساب کاربری",
+        "sign up": "ثبت نام",
+        "Continue with Google": "ادامه با گوگل",
+        "Note By entering the niche you agree to all the": "توجه: با وارد کردن این حوزه شما با تمام",
+        "rules": " قوانین موافق هستید.",
+        "firstName": "نام",
+        "lastName": "نام خانوادگی",
+        "confirmPassword": "تکرار رمز عبور",
+        "cannot be empty": "نمی‌تواند خالی باشد",
+        "phone": "تلفن",
+        "phone_number": "شماره تلفن",
+        "cancel": "انصراف",
+        "must be at least 6 characters": "باید حداقل 6 کاراکتر باشد",
+        "passwords do not match": "رمزهای عبور مطابقت ندارند",
+        "send code": "ارسال کد",
+        "verify code": "تایید کد",
+        "code expire in": "کد منقضی می‌شود در",
+        "resend code": "ارسال مجدد کد",
+        "Awards": "جوایز",
+        "Popular Authors": "نویسندگان محبوب",
+        "Read": "در حال خواندن",
+        "My Book": "کتاب من",
+        "Finished": "تمام شده",
+        "More": "بیشتر",
+        "Welcome": "خوش‌آمدید",
+        "Account": "حساب",
+        "Saved": "ذخیره‌شده‌ها",
+        "Upload": "بارگذاری",
+        "Exit": "خروج",
+        "English Since": "از کی انگلیسی",
+        "Contact": "تماس با ما",
+        "About": "درباره ما",
+        "Download App": "دانلود اپلیکیشن",
+        "new password": "رمز عبور جدید",
+        "confirm password": "تایید رمز عبور",
+        "must be 4 digits": "باید 4 رقم باشد",
+        "update password": "به‌روزرسانی رمز عبور"
+        ,
+        "no_results_found": "هیچ نتیجه‌ای یافت نشد",
+        "clear_search": "پاک کردن جستجو",
+        "search_countries": "جستجوی کشورها...",
+        "items_selected": "مورد انتخاب شده",
+        "hide_password": "پنهان کردن رمز عبور",
+        "show_password": "نمایش رمز عبور",
+        "password_strength": {
+            "very_weak": "خیلی ضعیف",
+            "weak": "ضعیف",
+            "fair": "متوسط",
+            "good": "خوب",
+            "strong": "قوی",
+            "very_strong": "خیلی قوی"
+        },
+        "upload_files": "بارگذاری فایل‌ها",
+        "upload_file": "بارگذاری فایل",
+        "click_or_drag": "کلیک یا کشیدن اینجا"
+        ,
+        "no_data_available": "داده‌ای موجود نیست",
+        "loading": "در حال بارگذاری...",
+        "drop_drag": "کشیدن و رها کردن",
+        "file": "فایل",
+        "or": "یا",
+        "browse": "مرور",
+        "file_on_your_computer": "فایل در کامپیوتر شما",
+        "edit_photo": "ویرایش عکس"
+        ,
+        "close": "بستن",
+        "previous_slide": "اسلاید قبلی",
+        "next_slide": "اسلاید بعدی",
+        "slide": "اسلاید",
+        "of": "از",
+        "go_to_slide": "برو به اسلاید",
+        "play": "پخش",
+        "noFile": "فایل PDF مشخص نشده است",
+        "loadError": "خطا در بارگذاری PDF",
+        "checkFile": "لطفاً فایل یا لینک را بررسی کنید",
+        "pageNotFound": "صفحه یافت نشد",
+        "sorryPageNotFound": "متاسفانه صفحه‌ای که به دنبال آن بودید وجود ندارد یا منتقل شده است.",
+        "maybeTrySearching": "شاید بتوانید برای چیز دیگری جستجو کنید یا به صفحه اصلی بازگردید.",
+        "goBack": "بازگشت",
+        "systemError": "خطای سیستم",
+        "somethingWentWrong": "متاسفانه مشکلی پیش آمده است.",
+        "pleaseTryAgain": "لطفاً دوباره تلاش کنید.",
+        "retry": "تلاش مجدد",
+        "errorOccurred": "اگر مشکل ادامه داشت، با پشتیبانی تماس بگیرید.",
+        "goHome": "بازگشت به صفحه اصلی",
+        "pageError": "خطای صفحه",
+        "tryAgainLater": "لطفاً بعداً دوباره تلاش کنید.",
+        "unexpectedError": "خطای غیرمنتظره‌ای رخ داد.",
+        "errorDetails": "جزئیات خطا",
+        "confirm": "تایید"
+    },
+
+    "home": {
+        "academic&educational": "آکادمیک و آموزشی",
+        "educational": "آموزشی",
+        "art": "هنر",
+        "biography": "زندگینامه",
+        "poetry&creative": "شعر و خلاقانه",
+        "science&technology": "علم و فناوری",
+        "romantic": "عاشقانه",
+        "magazine&articles": "مجله و مقالات",
+        "child&adolescent": "کودکان و نوجوانان",
+        "historical": "تاریخی"
+    },
+    "profile": {
+        "welcome": "خوش‌آمدید",
+        "default_name": "کاربر",
+        "account": "حساب",
+        "saved": "ذخیره‌شده‌ها",
+        "upload": "بارگذاری",
+        "exit": "خروج",
+        "read": "در حال خواندن",
+        "my_book": "کتاب من",
+        "finished": "تمام شده",
+        "notification": "اعلانات"
+    },
+    "homeBanner": {
+        "title": "A Library in Your Pocket",
+        "subtitle": "ready when you are"
+    }
+    ,
+    "footer": {
+        "brand": "طاقچه",
+        "taghche": {
+            "title": "طاقچه",
+            "about": "درباره ما",
+            "help": "راهنما"
+        },
+        "contact": {
+            "title": "تماس با ما",
+            "email_label": "ایمیل",
+            "phone_label": "تلفن"
+        },
+        "download": {
+            "title": "دانلود",
+            "google_play_alt": "دریافت از گوگل‌پلی"
+        },
+        "account": "حساب کاربری",
+        "account_email_placeholder": "*****@gmail.com",
+        "copyright_prefix": "©",
+        "copyright_suffix": "تمامی حقوق محفوظ است."
+    }
+    ,
+    "rulesModal": {
+        "introduction": {
+            "title": "مقدمه",
+            "content": "به‌طور خلاصه توضیح دهید که سرویس چیست و استفاده از آن به‌معنای پذیرفتن این شرایط است."
+        },
+        "userAccounts": {
+            "title": "حساب‌های کاربری",
+            "item1": "چه کسانی می‌توانند حساب کاربری بسازند",
+            "item2": "مسئولیت حفظ امنیت اطلاعات ورود",
+            "item3": "تعلیق یا خاتمه حساب کاربری"
+        },
+        "contentIP": {
+            "title": "محتوا و مالکیت معنوی",
+            "item1": "مالکیت کتاب‌ها/محتوا",
+            "item2": "اقدامات مجاز کاربران (خواندن، دانلود، استفادهٔ شخصی)",
+            "item3": "موارد ممنوعه (توزیع مجدد، فروش مجدد، کپی‌برداری)"
+        },
+        "payments": {
+            "title": "پرداخت‌ها و اشتراک‌ها",
+            "item1": "قیمت‌گذاری",
+            "item2": "سیاست بازپرداخت",
+            "item3": "تمدید خودکار (در صورت وجود)"
+        },
+        "prohibited": {
+            "title": "فعالیت‌های ممنوع",
+            "item1": "استفادهٔ غیرقانونی",
+            "item2": "نقض حقوق نشر",
+            "item3": "هک یا سوءاستفاده از سرویس"
+        },
+        "note": "توجه: با ورود به این بخش، شما با تمام قوانین موافقت می‌کنید."
+    }
+}

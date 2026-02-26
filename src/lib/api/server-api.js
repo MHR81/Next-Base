@@ -1,3 +1,37 @@
+// import axios from "axios";
+// import { cookies } from "next/headers";
+
+// const BASE_URL = "http://api.mahmeltaxi.ir/api";
+
+// const axiosServer = axios.create({
+//     baseURL: BASE_URL,
+//     timeout: 600000,
+// });
+
+// axiosServer.interceptors.request.use(async (config) => {
+//     const cookieStore = await cookies();
+//     const token = cookieStore.get("accessToken_p")?.value;
+
+//     if (token) {
+//         config.headers.Authorization = `Bearer ${token}`;
+//     }
+
+//     return config;
+// });
+
+// axiosServer.interceptors.response.use(
+//     (res) => res.data,
+//     (err) => {
+//         console.error("Server Axios Error:", err);
+//         throw err;
+//     }
+// );
+
+// export default axiosServer;
+
+
+
+
 import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
 import { API_CONFIG } from './config/config';
@@ -40,6 +74,8 @@ export async function serverRequest(endpoint, options = {}) {
 
     try {
         const response = await fetch(url, config);
+        // console.log(`Request: ${config.method || 'GET'} ${url}`, config);
+        // console.log('Response:', response);
 
         if (response.status === 401 || response.status === 403) {
             redirect('/login');
@@ -60,7 +96,7 @@ export async function serverRequest(endpoint, options = {}) {
         if (error instanceof ServerAPIError) throw error;
         if (error.message?.includes('NEXT_REDIRECT')) throw error;
         throw new ServerAPIError(
-            error.message || 'خطا در ارتباط با سرور',
+            error.message || 'error in server request',
             0,
             null
         );
@@ -68,7 +104,8 @@ export async function serverRequest(endpoint, options = {}) {
 }
 
 export const serverApi = {
-    get: (endpoint, params) => {
+    get: (endpoint) => serverRequest(endpoint, { method: 'GET' }),
+    getByParams: (endpoint, params) => {
         const query = params ? `?${new URLSearchParams(params)}` : '';
         return serverRequest(`${endpoint}${query}`, { method: 'GET' });
     },

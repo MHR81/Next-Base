@@ -1,33 +1,39 @@
 import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
-import Link from 'next/link';
+import StoreProvider from '@/redux/store-provider';
+import LocaleProvider from '@/langueges/LocaleProvider';
+import HeaderWrapper from "@/_components/layout/HeaderWrapper";
+
 
 export const metadata = {
     title: {
-        template: '%s | احراز هویت',
-        default: 'ورود',
+        template: '%s | Authentication',
+        default: 'Login',
     },
-    description: 'ورود و ثبت‌نام در Next Base',
+    description: 'Authentication pages (login, register, password reset).',
     robots: 'noindex, nofollow',
 };
 
 export default async function AuthLayout({ children }) {
-    
-    const token = (await cookies()).get('accessToken')?.value;
-    if (token) redirect('/dashboard');
+
+    const cookieStore = await cookies();
+    const token = cookieStore.get('accessToken')?.value;
+    const savedLang = cookieStore.get('lang')?.value || 'en';
+
+    if (token) redirect('/profile');
 
     return (
-        <div className="min-h-screen bg-gray-50 flex items-center justify-center p-4">
-            <div className="w-full max-w-md">
-                <div className="bg-white rounded-2xl shadow-xl p-8">
-                    <div className="text-center mb-8">
-                        <Link href="/" className="text-2xl font-bold text-primary">
-                            Next Base
-                        </Link>
-                    </div>
-                    {children}
+        <StoreProvider initialLocale={savedLang} >
+            <LocaleProvider>
+                <div className="min-h-screen flex flex-col justify-center items-center">
+                    <HeaderWrapper />
+                    <main className="flex justify-center items-center w-full h-full my-auto p-6">
+                        <div className="rounded-lg p-4 w-full max-w-md">
+                            {children}
+                        </div>
+                    </main>
                 </div>
-            </div>
-        </div>
+            </LocaleProvider>
+        </StoreProvider >
     );
 }

@@ -1,27 +1,28 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice } from "@reduxjs/toolkit";
 
 const toastSlice = createSlice({
-    name: 'toast',
+    name: "toast",
     initialState: {
-        toasts: [],
+        message: "",
+        type: "success",
+        visible: false,
     },
     reducers: {
-        showToast: (state, action) => {
-            const id = Date.now();
-            state.toasts.push({
-                id,
-                type: action.payload.type || 'info',
-                message: action.payload.message,
-            });
+        showToast(state, action) {
+            console.log("showToast action payload:", action.payload);
+            const { message, type } = action.payload;
+            state.message = message;
+            state.type = type || "success";
+            state.visible = true;
+            console.log("Updated toast state:", state.message, state.type, state.visible);
         },
-        removeToast: (state, action) => {
-            state.toasts = state.toasts.filter((t) => t.id !== action.payload);
-        },
-        clearToasts: (state) => {
-            state.toasts = [];
+        hideToast(state) {
+            state.visible = false;
+            state.message = "";
+            state.type = "success";
         },
     },
 });
 
-export const { showToast, removeToast, clearToasts } = toastSlice.actions;
+export const { showToast, hideToast } = toastSlice.actions;
 export default toastSlice.reducer;

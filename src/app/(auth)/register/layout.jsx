@@ -1,10 +1,10 @@
 export const metadata = {
-    title: 'ثبت نام',
-    description: 'صفحه ثبت نام کاربران',
+    title: 'Register',
+    description: 'Create a new account to access Taghche services.',
     openGraph: {
-        title: 'ثبت نام',
-        description: 'صفحه ثبت نام کاربران',
-        type: 'website',
+        title: 'Register',
+        description: 'Create a new account to access Taghche services.',
+        type: 'website'
     },
 };
 

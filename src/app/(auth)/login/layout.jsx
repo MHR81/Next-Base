@@ -1,11 +1,12 @@
 export const metadata = {
-    title: 'ورود',
-    description: 'صفحه ورود به حساب کاربری',
+    title: 'Login',
+    description: 'User login page.',
     openGraph: {
-        title: 'ورود',
-        description: 'صفحه ورود به حساب کاربری',
-        type: 'website',
+        title: 'Login',
+        description: 'User login page.',
+        type: 'website'
     },
+    robots: 'noindex, nofollow'
 };
 
 export default function LoginLayout({ children }) {

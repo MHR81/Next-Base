@@ -1,7 +1,7 @@
 import { cookies } from 'next/headers';
 import { NextResponse } from 'next/server';
 
-const API_URL = "http://localhost:3000/api";
+const API_URL = "http://192.168.70.194:3002/api";
 
 async function handler(request, { params }) {
     const path = params.path.join('/');

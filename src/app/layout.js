@@ -1,29 +1,54 @@
 import './globals.css';
-import StoreProvider from '@/redux/store-provider';
-import MainLayout from '@/components/layout/MainLayout';
-import Toast from '@/components/Toast';
+import { cookies } from 'next/headers';
+import Providers from './providers';
 
 export const metadata = {
-  title: {
-    default: 'Next Base',
-    template: '%s | Next Base',
+  title: { default: 'Taghche', template: '%s | Taghche' },
+  description: 'Taghche — a leading Persian e-book and audiobook store.',
+  keywords: ['Taghche', 'ebooks', 'audiobooks', 'Persian books', 'digital library'],
+  openGraph: {
+    title: 'Taghche',
+    description: 'Taghche — a leading Persian e-book and audiobook store.',
+    siteName: 'Taghche',
+    type: 'website',
+    url: process.env.NEXT_PUBLIC_SITE_URL || 'https://example.com',
+    images: [
+      {
+        url: '/og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Taghche — ebooks and audiobooks'
+      }
+    ]
   },
-  description: 'پروژه بیس Next.js حرفه‌ای برای شروع سریع پروژه‌های جدید',
-  keywords: 'nextjs, react, base, template, boilerplate',
-  author: 'Next Base',
-  version: '1.0.0',
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Taghche',
+    description: 'Taghche — a leading Persian e-book and audiobook store.'
+  },
+  robots: {
+    index: true,
+    follow: true
+  },
+  alternates: {
+    canonical: process.env.NEXT_PUBLIC_SITE_URL || 'https://example.com',
+    languages: {
+      'en-US': '/',
+      'fa-IR': '/fa'
+    }
+  }
 };
 
-export default function RootLayout({ children }) {
+export default async function RootLayout({ children }) {
+  const cookieStore = await cookies();
+  const savedLang = cookieStore.get('lang')?.value || 'en';
+
   return (
-    <html lang="fa" dir="rtl">
+    <html lang={savedLang} dir={savedLang === 'fa' ? 'rtl' : 'ltr'}>
       <body className="antialiased bg-white text-gray-900">
-        <StoreProvider>
-          <MainLayout>
-            {children}
-            <Toast />
-          </MainLayout>
-        </StoreProvider>
+        <Providers lang={savedLang}>
+          {children}
+        </Providers>
       </body>
     </html>
   );

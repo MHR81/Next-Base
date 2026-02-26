@@ -1,25 +1,28 @@
 import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
-import { serverAuthService } from '@/lib/services/server/auth';
+import { serverProfileService } from '@/lib/services/server/profile';
 import StoreProvider from '@/redux/store-provider';
 
 export const metadata = {
     title: {
         template: '%s | Next Base',
-        default: 'داشبورد',
+        default: 'Dashboard',
     },
-    description: 'داشبورد کاربری Next Base',
+    description: 'User dashboard and protected pages for authenticated users.',
+    robots: 'noindex, nofollow',
 };
 
 export default async function ProtectedLayout({ children }) {
 
-    const token = (await cookies()).get('accessToken')?.value;
+    const cookieStore = await cookies();
+    const token = cookieStore.get('accessToken')?.value;
+    const savedLang = cookieStore.get('lang')?.value || 'en';
     if (!token) redirect('/login');
 
     let userProfile = null;
     try {
-        const res = await serverAuthService.getMe();
-        // console.log("res in layout", res);
+        const res = await serverProfileService.getMe();
+        console.log("res in layout", res);
         userProfile = res?.data;
     } catch (error) {
         console.error("Error fetching user in layout:", error);
@@ -31,7 +34,7 @@ export default async function ProtectedLayout({ children }) {
     }
 
     return (
-        <StoreProvider preloadedState={preloadedState}>
+        <StoreProvider preloadedState={preloadedState} initialLocale={savedLang}>
             <div className="min-h-screen w-full flex flex-col">
                 <main>{children}</main>
             </div>
