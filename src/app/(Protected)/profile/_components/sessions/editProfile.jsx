@@ -5,8 +5,6 @@ import { useState, useRef, useEffect } from "react";
 import { motion } from 'framer-motion';
 import { useLanguages } from "@/langueges/useLanguages";
 import { FormInput } from "@/_components/ui/Input";
-// import userService from "../../../services/api/profile";
-// import fileService from "../../../services/api/file";
 import Image from "next/image";
 import defaultUser from "@/_assets/images/defaultUser.jpg";
 import { clientProfileService } from "@/lib/services/client/profile";

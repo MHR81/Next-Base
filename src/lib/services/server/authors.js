@@ -1,6 +1,6 @@
-import { serverApi } from '@/lib/api/server-api';
+import { serverFetch } from "@/lib/api/server-api";
 
 export const serverAuthorsService = {
-    getAuthors: () => serverApi.get(`/authors/v1/get-all-author`),
-
+    getAuthors: () => serverFetch(`/authors/v1/get-all-author`),
+    getAuthorById: (id) => serverFetch(`/authors/v1/get-one-author/${id}`),
 };

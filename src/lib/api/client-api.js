@@ -1,163 +1,112 @@
-// import axios, { AxiosHeaders } from "axios";
-// import { removeToken } from "@app/features/tokenSession";
-// import { toast } from "@mahmel/ui/toast/toast";
-// import Cookies from "js-cookie";
+import axios from "axios";
+import StoreProvider from "@/redux/store-provider";
+import { showLoading, hideLoading } from "@/redux/slices/loadingSlice";
+import { removeToken } from "@/redux/slices/authSlice";
+import { showToast } from "@/redux/slices/toastSlice";
+import { toastIgnore } from "./toastIgnore";
+import Cookies from "js-cookie";
 
-// const BASE_URL = "https://api.mahmeltaxi.ir/api";
-// const TIMEOUT = 600000;
+const BASE_URL = import.meta.env.API_BASE_URL || "http://192.168.70.194:3002/api";
+const TIMEOUT = 600000;
 
-// axios.defaults.baseURL = BASE_URL;
-// axios.defaults.timeout = TIMEOUT;
+axios.defaults.baseURL = BASE_URL;
+axios.defaults.timeout = TIMEOUT;
 
-// axios.interceptors.request.use((config) => {
-//     const token = Cookies.get("accessToken_p");
+const isMutatingMethod = (method) => ["post", "put", "delete", "patch"].includes(method?.toLowerCase());
 
-//     if (token) {
-//         config.headers.Authorization = `Bearer ${token}`;
-//     }
+const extractMessage = (obj) =>
+  obj?.response?.data?.data?.message ||
+  obj?.data?.data?.message ||
+  obj?.message ||
+  obj?.data?.message ||
+  obj?.response?.data?.message ||
+  obj?.response?.message ||
+  "خطایی رخ داده است!";
 
-//     return config;
-// });
-
-// const isMutatingMethod = (method) => {
-//     if (!method) return false;
-//     const m = method.toLowerCase();
-//     return m === "post" || m === "put" || m === "delete" || m === "patch";
-// };
-
-// const extractMessage = (obj) => {
-//     return (
-//         obj?.response?.data?.data?.message ||
-//         obj?.data?.data?.message ||
-//         obj?.data?.message ||
-//         obj?.response?.data?.message ||
-//         obj?.response?.message ||
-//         obj?.data?.message ||
-//         "خطایی رخ داده است!"
-//     );
-// };
-
-// const responseBody = (response) => {
-//     try {
-//         if (isMutatingMethod(response?.config?.method)) {
-//             const message = extractMessage(response) || "عملیات با موفقیت انجام شد";
-//             // toast.success(message);
-//         }
-//     } catch (e) {
-//         console.error("responseBody error:", e);
-//     }
-//     return response;
-// };
-
-// const errorBody = (error) => {
-//     try {
-//         const method =
-//             error?.config?.method ||
-//             error?.response?.config?.method ||
-//             error?.request?.method;
-
-//         if (isMutatingMethod(method)) {
-//             const message = extractMessage(error) || "مشکلی در انجام عملیات رخ داد";
-//             // toast.error(message);
-//         }
-//     } catch (e) {
-//         console.error("errorBody error:", e);
-//     }
-
-//     if (error.response && [401, 403].includes(error.response.status)) {
-//         removeToken();
-//         window.location.href = "/auth";
-//     }
-
-//     throw error?.response || error;
-// };
-
-// axios.interceptors.request.use(
-//     (config) => {
-//         if (!config.headers) {
-//             config.headers = AxiosHeaders.from({});
-//         }
-//         return config;
-//     },
-//     (error) => Promise.reject(error)
-// );
-
-// axios.interceptors.response.use(
-//     responseBody,
-//     (error) => {
-//         if (!error.response) {
-//             if (error.code === "ECONNABORTED" || error.message.includes("timeout")) {
-//                 toast.error("مهلت زمانی درخواست تمام شد، دوباره تلاش کنید");
-//             } else if (error.message.includes("Network Error")) {
-//                 toast.error("لطفا اتصال اینترنت خود را بررسی کنید");
-//             } else {
-//                 toast.error("خطا در برقراری ارتباط با سرور");
-//             }
-//             return Promise.reject(error);
-//         }
-//         const data = error.response.data as { message };
-//         const status = error.response.status;
-//         switch (status) {
-//             case 404:
-//                 toast.error("صفحه یا اطلاعات درخواستی یافت نشد");
-//                 break;
-//             case 422:
-//                 toast.error(data?.message || "اطلاعات ارسالی نامعتبر است");
-//                 break;
-//             case 429:
-//                 toast.error("تعداد درخواست‌ها زیاد است، کمی صبر کنید");
-//                 break;
-//             case 500:
-//                 toast.error("خطای داخلی سرور، لطفا بعدا تلاش کنید");
-//                 break;
-//             default:
-//                 toast.error(data?.message || `خطای غیرمنتظره (کد: ${status})`);
-//         }
-//         return Promise.reject(error);
-//     }
-// );
-
-// const requests = {
-//     get: (url) => axios.get(url).then(responseBody).catch(errorBody),
-//     getByParams: (url, params) => axios.get(url, { params }).then(responseBody).catch(errorBody),
-//     post: (url, body) => axios.post(url, body).then(responseBody).catch(errorBody),
-//     put: (url, body) => axios.put(url, body).then(responseBody).catch(errorBody),
-//     patch: (url, body) => axios.patch(url, body).then(responseBody).catch(errorBody),
-//     delete: (url) => axios.delete(url).then(responseBody).catch(errorBody),
-//     postFormData: (url, formData) =>
-//         axios.post(url, formData, { headers: { "Content-type": "multipart/form-data" } }).then(responseBody),
-//     putMedia: (url, body) =>
-//         axios.put(url, body, { headers: { "Content-type": "application/x-www-form-urlencoded" } }).then(responseBody).catch(errorBody),
-// };
-
-// export default requests;
-
-
-
-
-'use client';
-
-import axios from 'axios';
-import { API_CONFIG } from './config/config';
-
-export const clientAxios = axios.create({
-    baseURL: API_CONFIG.PROXY_BASE,
-    timeout: API_CONFIG.TIMEOUT,
-    withCredentials: true,
-});
-
-export const clientApi = {
-    get: (url) => clientAxios.get(url),
-    getByParams: (url, params) => clientAxios.get(url, { params }),
-    post: (url, body) => clientAxios.post(url, body),
-    put: (url, body) => clientAxios.put(url, body),
-    patch: (url, body) => clientAxios.patch(url, body),
-    delete: (url, body) => clientAxios.delete(url, { data: body }),
-    postFormData: (url, formData) => clientAxios.post(url, formData),
-    putMedia: (url, body) =>
-        clientAxios.put(url, body, {
-            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        }),
+const getErrorMessageByStatus = (status, data) => {
+  switch (status) {
+    case 400: return data?.message || "درخواست نامعتبر است";
+    case 401: return data?.message || "نشست شما منقضی شده، مجدد وارد شوید";
+    case 403: return data?.message || "دسترسی شما محدود شده است";
+    case 404: return data?.message || "صفحه یا اطلاعات درخواستی یافت نشد";
+    case 422: return data?.message || "اطلاعات ارسالی نامعتبر است";
+    case 429: return data?.message || "تعداد درخواست‌ها زیاد است، کمی صبر کنید";
+    case 500: return data?.message || "خطای داخلی سرور، لطفاً بعداً تلاش کنید";
+    case 502:
+    case 503: return data?.message || "سرور در حال حاضر در دسترس نیست";
+    case 504: return data?.message || "سرور پاسخ نداد، دوباره تلاش کنید";
+    default: return data?.message || `خطای غیرمنتظره (کد: ${status})`;
+  }
 };
 
-export default clientApi;
+axios.interceptors.request.use(
+  (config) => {
+    const token = Cookies.get("accessToken");
+    if (token) config.headers.Authorization = `Bearer ${token}`;
+    // store.dispatch(showLoading());
+    return config;
+  },
+  (error) => {
+    store.dispatch(hideLoading());
+    return Promise.reject(error);
+  }
+);
+
+axios.interceptors.response.use(
+  (response) => {
+    try {
+      const method = response.config.method;
+      const url = response.config.url;
+      if (!toastIgnore.some(u => url.includes(u)) && isMutatingMethod(method)) {
+        const message = extractMessage(response) || "عملیات با موفقیت انجام شد";
+        store.dispatch(showToast({ type: "success", message }));
+      }
+    } catch (e) {
+      console.error("toast response error:", e);
+    } finally {
+      store.dispatch(hideLoading());
+    }
+    return response;
+  },
+  (error) => {
+    store.dispatch(hideLoading());
+
+    if (!error.response) {
+      const networkMessage = error.message.includes("Network Error")
+        ? "لطفا اتصال اینترنت خود را بررسی کنید"
+        : error.message.includes("timeout")
+          ? "مهلت زمانی درخواست تمام شد، دوباره تلاش کنید"
+          : "خطا در برقراری ارتباط با سرور";
+
+      store.dispatch(showToast({ message: networkMessage, type: "error" }));
+      return Promise.reject(error);
+    }
+
+    const { status, data } = error.response;
+    const url = error.config?.url || "";
+
+    if (!toastIgnore.some(u => url.includes(u))) {
+      const message = getErrorMessageByStatus(status, data);
+      store.dispatch(showToast({ type: "error", message }));
+    }
+
+    if ([401, 403].includes(status)) store.dispatch(removeToken());
+
+    return Promise.reject(error);
+  }
+);
+
+const requests = {
+  get: (url) => axios.get(url),
+  getByParams: (url, params) => axios.get(url, { params }),
+  post: (url, body) => axios.post(url, body),
+  put: (url, body) => axios.put(url, body),
+  patch: (url, body) => axios.patch(url, body),
+  delete: (url, body) => axios.delete(url, { data: body }),
+  postFormData: (url, formData) =>
+    axios.post(url, formData, { headers: { "Content-Type": "multipart/form-data" } }),
+  putMedia: (url, body) =>
+    axios.put(url, body, { headers: { "Content-Type": "application/x-www-form-urlencoded" } }),
+};
+
+export default requests;

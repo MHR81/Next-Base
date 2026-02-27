@@ -11,37 +11,37 @@ export const metadata = {
     description: 'Taghche — a leading Persian e-book and audiobook store.',
     siteName: 'Taghche',
     type: 'website',
-    url: process.env.NEXT_PUBLIC_SITE_URL || 'https://example.com',
-    images: [
-      {
-        url: '/og-image.jpg',
-        width: 1200,
-        height: 630,
-        alt: 'Taghche — ebooks and audiobooks'
-      }
-    ]
+    // url: process.env.NEXT_PUBLIC_SITE_URL || 'https://example.com',
+    // images: [
+    //   {
+    //     url: '/og-image.jpg',
+    //     width: 1200,
+    //     height: 630,
+    //     alt: 'Taghche — ebooks and audiobooks'
+    //   }
+    // ]
   },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Taghche',
-    description: 'Taghche — a leading Persian e-book and audiobook store.'
-  },
+  // twitter: {
+  //   card: 'summary_large_image',
+  //   title: 'Taghche',
+  //   description: 'Taghche — a leading Persian e-book and audiobook store.'
+  // },
   robots: {
     index: true,
     follow: true
   },
-  alternates: {
-    canonical: process.env.NEXT_PUBLIC_SITE_URL || 'https://example.com',
-    languages: {
-      'en-US': '/',
-      'fa-IR': '/fa'
-    }
-  }
+  // alternates: {
+  //   canonical: process.env.NEXT_PUBLIC_SITE_URL || 'https://example.com',
+  //   languages: {
+  //     'en-US': '/',
+  //     'fa-IR': '/fa'
+  //   }
+  // }
 };
 
 export default async function RootLayout({ children }) {
   const cookieStore = await cookies();
-  const savedLang = cookieStore.get('lang')?.value || 'en';
+  const savedLang = cookieStore.get('local')?.value || 'en';
 
   return (
     <html lang={savedLang} dir={savedLang === 'fa' ? 'rtl' : 'ltr'}>

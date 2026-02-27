@@ -87,29 +87,13 @@ const StarRating = ({ rating, size = 16 }) => (
 );
 
 
-export default function BookDetails() {
+export default function BookDetail({ data }) {
     const [liked, setLiked] = useState(false);
     const [disliked, setDisliked] = useState(false);
     const router = useRouter();
-    const params = useParams();
     const { isRTL } = useLanguages();
-    const [bookData, setBookData] = useState({});
+    const [bookData, setBookData] = useState(data || {});
 
-    useEffect(() => {
-        if (params?.id) {
-            const fetchBookDetails = async (bookId) => {
-                if (!bookId) return;
-                try {
-                    const response = await clientBookService.getBookById(bookId);
-                    console.log("Book Details response:", response);
-                    setBookData(response?.data?.data);
-                } catch (error) {
-                    console.error("Error fetching book details:", error);
-                }
-            };
-            fetchBookDetails(params.id);
-        }
-    }, [params?.id]);
 
 
     return (
@@ -129,17 +113,17 @@ export default function BookDetails() {
                         className="md:shrink-0 flex items-center md:items-start justify-center"
                     >
 
-                        {bookData.type === "podcast" ? (
+                        {bookData?.type === "podcast" ? (
                             // <div className="w-56 h-56 rounded-xl overflow-hidden shadow-xl">
-                            <DiscImage size={220} holeSize={30} src={bookData?.image?.path} alt={bookData.title} />
+                            <DiscImage size={220} holeSize={30} src={bookData?.image?.path || book1} alt={bookData?.title || "Podcast Cover"} />
                             // </div>
                         ) : (
                             <div className="w-56 h-80 rounded-xl overflow-hidden shadow-xl">
                                 <Image
                                     width={100}
                                     height={100}
-                                    src={bookData?.image?.path}
-                                    alt={bookData?.title}
+                                    src={bookData?.image?.path || book1}
+                                    alt={bookData?.title || "Book Cover"}
                                     className="w-full h-full object-cover"
                                 />
                             </div>
@@ -160,10 +144,10 @@ export default function BookDetails() {
 
                         {/* Title & Author */}
                         <div className='flex gap-2 justify-start items-center'>
-                            <h1 className="text-2xl font-bold text-gray-900 mb-1">{bookData.title}</h1>
+                            <h1 className="text-2xl font-bold text-gray-900 mb-1">{bookData?.title}</h1>
                             <div className="flex items-center gap-3 mb-4">
-                                <span className="text-gray-600 font-medium">{bookData.author}</span>
-                                <span className="text-gray-400 text-sm">{bookData.publisher}</span>
+                                <span className="text-gray-600 font-medium">{bookData?.author}</span>
+                                <span className="text-gray-400 text-sm">{bookData?.publisher}</span>
                             </div>
                         </div>
                         {/* Action Buttons */}
@@ -182,9 +166,9 @@ export default function BookDetails() {
                                         <AudioPlayerButton
                                             // className={`lg:ms-5 ${isRTL ? 'lg:me-5' : ''}`}
                                             audioSrc={"/testVoice.mp3"}
-                                            coverImage={bookData?.image?.path}
-                                            title={bookData.title}
-                                            author={bookData.author}
+                                            coverImage={bookData?.image?.path || book1}
+                                            title={bookData?.title}
+                                            author={bookData?.author}
                                             onEnded={() => console.log('Finished!')}
                                             onNext={() => console.log('Next track')}
                                             onPrevious={() => console.log('Previous track')}
@@ -193,14 +177,14 @@ export default function BookDetails() {
                                 </div>
 
                                 <span>
-                                    Added by : {bookData.author}
+                                    Added by : {bookData?.author}
                                 </span>
                             </div>
 
                         </div>
 
                         <p className="text-gray-500 text-sm leading-6 whitespace-pre-line max-w-2xl">
-                            {bookData.description}
+                            {bookData?.description}
                         </p>
 
                         <motion.button

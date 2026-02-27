@@ -9,12 +9,10 @@ const toastSlice = createSlice({
     },
     reducers: {
         showToast(state, action) {
-            console.log("showToast action payload:", action.payload);
             const { message, type } = action.payload;
             state.message = message;
             state.type = type || "success";
             state.visible = true;
-            console.log("Updated toast state:", state.message, state.type, state.visible);
         },
         hideToast(state) {
             state.visible = false;

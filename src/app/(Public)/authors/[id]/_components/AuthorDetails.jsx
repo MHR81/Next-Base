@@ -5,7 +5,7 @@ import { useState } from 'react';
 import Carousel from '@/_components/ui/Carousel/Carousel';
 import Image from 'next/image';
 import awardMan from '@/_assets/images/awardMan.png';
-import { clientAuthorsService } from '@/lib/services/client/authors';
+// import { clientAuthorsService } from '@/lib/services/client/authors';
 import { useParams } from 'next/navigation';
 import { DiscImage } from '@/hooks/useDiscImage';
 import book1 from '@/_assets/images/book1.png';
@@ -61,29 +61,12 @@ const BookCard = ({ book, index }) => (
     </motion.div>
 );
 
-export default function AuthorDetails() {
+export default function AuthorDetails({ data }) {
     const params = useParams();
     const AuthorId = params?.id;
-    const [authorData, setAuthorData] = useState({});
+    const [authorData, setAuthorData] = useState(data || {});
     const [booksData, setBooksData] = useState([]);
 
-
-
-    useEffect(() => {
-        const getAuthorDetails = async () => {
-            try {
-                const response = await clientAuthorsService.getAuthorDetails(AuthorId);
-                console.log("Author details:", response?.data?.data);
-                setAuthorData(response?.data?.data?.author);
-                setBooksData(response?.data?.data?.findBooks);
-            } catch (error) {
-                console.error("Error fetching Author details:", error);
-            }
-        }
-        if (AuthorId) {
-            getAuthorDetails();
-        }
-    }, [AuthorId])
 
     // useEffect(() => {
     //     const getAuthorBooks = async () => {
@@ -114,7 +97,7 @@ export default function AuthorDetails() {
                         initial={{ opacity: 0, scale: 0.9 }}
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ delay: 0.2, duration: 0.5 }}
-                        className="flex-shrink-0"
+                        className="shrink-0"
                     >
                         <div className="w-72 h-80 rounded-2xl overflow-hidden shadow-lg">
                             <Image

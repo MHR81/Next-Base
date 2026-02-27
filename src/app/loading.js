@@ -1,11 +1,9 @@
 'use client';
 
-// import { useLanguages } from '@/langueges/useLanguages';
 import { motion } from 'framer-motion';
 import { BookOpen } from 'lucide-react';
 
 export default function Loading() {
-    // const { t } = useLanguages();
     return (
         <div className="min-h-screen bg-gradient-white/5 backdrop:blur-sm flex items-center justify-center">
             <div className="flex flex-col items-center gap-6">
@@ -21,7 +19,7 @@ export default function Loading() {
                     }}
                     className="relative"
                 >
-                    <div className="w-20 h-24 bg-gradient-to-br from-[#F4A261] to-[#E89550] rounded-r-lg rounded-l-sm shadow-lg flex items-center justify-center">
+                    <div className="w-20 h-24 bg-linear-to-br from-[#F4A261] to-[#E89550] rounded-r-lg rounded-l-sm shadow-lg flex items-center justify-center">
                         <BookOpen className="w-10 h-10 text-white" />
                     </div>
                     <motion.div
@@ -37,8 +35,7 @@ export default function Loading() {
                         transition={{ duration: 1.5, repeat: Infinity }}
                         className="text-gray-600 font-medium"
                     >
-                        {/* {t('common.loading')} */}
-                        loading
+                        loading...
                     </motion.p>
                     <div className="flex gap-1 justify-center mt-2">
                         {[0, 1, 2].map((i) => (

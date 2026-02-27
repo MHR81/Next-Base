@@ -10,6 +10,7 @@ import book3 from '@/app/(Public)/_components/images/book3.png';
 import book4 from '@/app/(Public)/_components/images/book4.png';
 import { Star } from 'lucide-react';
 import { FiArrowRight } from "react-icons/fi";
+import Link from 'next/link';
 
 export default function Popular_Books() {
     const { isRTL, t } = useLanguages();
@@ -54,10 +55,10 @@ export default function Popular_Books() {
                 >
                     {t("common.Popular Books")}
                 </motion.h2>
-                <button className={` flex items-center justify-center gap-1.5 text-black text-lg hover:text-gray-700 transition-colors`}>
+                <Link href="/books" className={` flex items-center justify-center gap-1.5 text-black text-lg hover:text-gray-700 transition-colors`}>
                     {t('common.More')}
                     <FiArrowRight className={`${isRTL ? 'rotate-y-180' : ''} mb-1`} />
-                </button>
+                </Link>
             </div>
 
 

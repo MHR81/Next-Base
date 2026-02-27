@@ -3,7 +3,7 @@
 import { useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { setLocale } from '@/redux/slices/localeSlice';
-import Cookies from 'js-cookie';
+
 import fa from '@/langueges/locales/fa.json';
 import en from '@/langueges/locales/en.json';
 
@@ -24,7 +24,7 @@ export function useLanguages() {
 
     const changeLanguage = useCallback((newLang) => {
         dispatch(setLocale(newLang));
-        Cookies.set('lang', newLang, { expires: 365 });
+        
     }, [dispatch]);
 
     return {

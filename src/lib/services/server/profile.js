@@ -1,5 +1,5 @@
-import { serverApi } from '@/lib/api/server-api';
+import { serverFetch } from "@/lib/api/server-api";
 
 export const serverProfileService = {
-    getMe: () => serverApi.get('/user/v1/get-my-profile'),
+    getMe: () => serverFetch("/user/v1/get-my-profile"),
 };

@@ -18,7 +18,7 @@ export default async function AuthLayout({ children }) {
 
     const cookieStore = await cookies();
     const token = cookieStore.get('accessToken')?.value;
-    const savedLang = cookieStore.get('lang')?.value || 'en';
+    const savedLang = cookieStore.get('local')?.value || 'en';
 
     if (token) redirect('/profile');
 

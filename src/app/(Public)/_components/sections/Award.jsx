@@ -5,9 +5,11 @@ import Carousel from '@/_components/ui/Carousel/Carousel';
 import { useLanguages } from '@/langueges/useLanguages';
 import Award from '@/app/(Public)/_components/images/Award.png';
 import Image from 'next/image';
+import Link from 'next/link';
+import { FiArrowRight } from "react-icons/fi";
 
 export default function AwardSection() {
-    const { t } = useLanguages();
+    const { isRTL, t } = useLanguages();
 
     const Mock = [
         { image: Award, label: "Award1", id: 1 },
@@ -24,15 +26,21 @@ export default function AwardSection() {
             transition={{ duration: 0.6 }}
             viewport={{ once: true, margin: "-100px" }}
         >
-            <motion.h2
-                className="text-2xl text-start w-full font-semibold mb-4"
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5 }}
-                viewport={{ once: true }}
-            >
-                {t("common.Awards")}
-            </motion.h2>
+            <div className='flex w-full justify-between items-center'>
+                <motion.h2
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.5 }}
+                    viewport={{ once: true }}
+                    className="text-2xl font-semibold mb-4"
+                >
+                    {t("common.Awards")}
+                </motion.h2>
+                <Link href="/" className={` flex items-center justify-center gap-1.5 text-black text-lg hover:text-gray-700 transition-colors`}>
+                    {t('common.More')}
+                    <FiArrowRight className={`${isRTL ? 'rotate-y-180' : ''} mb-1`} />
+                </Link>
+            </div>
             <motion.div
                 className="w-full md:w-2/3 lg:w-lg"
                 initial={{ opacity: 0, scale: 0.9 }}
@@ -52,7 +60,7 @@ export default function AwardSection() {
                                 alt={m.label}
                                 draggable={false}
                                 onDragStart={(e) => e.preventDefault()}
-                                className="object-cover rounded-lg"
+                                className="object-cover w-full rounded-lg"
                             />
                         </div>
                     ))}

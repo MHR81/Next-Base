@@ -42,7 +42,7 @@ const BookCard = ({ book, index }) => {
         relative bg-white rounded-2xl p-4 shadow-sm border border-gray-100 
         hover:shadow-lg hover:border-orange-200 transition-all duration-300
         flex items-center justify-center
-        ${isAudio ? 'aspect-square' : 'aspect-[3/4]'}
+        ${isAudio ? 'aspect-square' : 'aspect-3/4'}
       `}>
                     {isAudio ? (
                         <DiscImage
@@ -64,7 +64,7 @@ const BookCard = ({ book, index }) => {
                                 alt={book.title}
                                 className="w-full h-full object-cover"
                             />
-                            <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-r from-white/30 to-transparent" />
+                            <div className="absolute left-0 top-0 bottom-0 w-1 bg-linear-to-r from-white/30 to-transparent" />
                         </div>
                     )}
                 </div>
@@ -96,11 +96,11 @@ export default function BookList({ data }) {
                 </motion.h1>
 
                 <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-6">
-                    {data?.map((book, index) => (
+                    {/* {data?.map((book, index) => (
 
                         <BookCard key={book._id} book={book} index={index} />
 
-                    ))}
+                    ))} */}
 
             </div>
         </div>

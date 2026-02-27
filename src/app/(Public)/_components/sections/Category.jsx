@@ -13,9 +13,11 @@ import SVG7 from '@/app/(Public)/_components/SVGs/Romantic.svg';
 import SVG8 from '@/app/(Public)/_components/SVGs/Magazine&Articles.svg';
 import SVG9 from '@/app/(Public)/_components/SVGs/Child&Adolescent.svg';
 import SVG10 from '@/app/(Public)/_components/SVGs/Historical.svg';
+import { FiArrowRight } from "react-icons/fi";
+import Link from 'next/link';
 
 export default function Category() {
-    const { t } = useLanguages();
+    const { isRTL, t } = useLanguages();
     
     const Mock = [
         { label: t("home.academic&educational"), icon: SVG1, id: 1 },
@@ -38,15 +40,21 @@ export default function Category() {
             transition={{ duration: 0.6 }}
             viewport={{ once: true, margin: "-100px" }}
         >
-            <motion.h2 
-                className="text-2xl font-semibold text-start w-full mb-4"
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5 }}
-                viewport={{ once: true }}
-            >
-                {t("common.category")}
-            </motion.h2>
+            <div className='flex w-full justify-between items-center'>
+                <motion.h2
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.5 }}
+                    viewport={{ once: true }}
+                    className="text-2xl font-semibold mb-4"
+                >
+                    {t("common.Categories")}
+                </motion.h2>
+                <Link href="/categories" className={` flex items-center justify-center gap-1.5 text-black text-lg hover:text-gray-700 transition-colors`}>
+                    {t('common.More')}
+                    <FiArrowRight className={`${isRTL ? 'rotate-y-180' : ''} mb-1`} />
+                </Link>
+            </div>
             <div className="flex flex-wrap justify-center gap-y-5 max-w-4xl">
                 {Mock.map((m, index) => (
                     <motion.div 

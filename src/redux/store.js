@@ -21,8 +21,7 @@ export const makeStore = (preloadedState) => {
         devTools: process.env.NODE_ENV !== 'production',
     });
 };
-
-// export const store = makeStore();
+export const store = makeStore();
 export const useAppDispatch = () => useDispatch();
 export const useAppSelector = useSelector;
 export const useAppStore = () => useStore();

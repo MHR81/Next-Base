@@ -10,11 +10,12 @@ import book3 from '../images/book3.png';
 import book4 from '../images/book4.png';
 // import { Star } from 'lucide-react';
 import { HiOutlineMicrophone } from "react-icons/hi";
-
+import { FiArrowRight } from "react-icons/fi";
+import Link from 'next/link';
 
 
 export default function Popular_Audio() {
-    const { t } = useLanguages();
+    const { isRTL, t } = useLanguages();
 
     // const StarRating = ({ rating, size = 16 }) => (
     //     <div className="flex gap-0.5">
@@ -46,22 +47,28 @@ export default function Popular_Audio() {
             transition={{ duration: 0.6 }}
             viewport={{ once: true, margin: "-100px" }}
         >
-            <motion.h2
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5 }}
-                viewport={{ once: true }}
-                className="text-2xl font-semibold mb-4"
-            >
-                {t("common.Popular Audio")}
-            </motion.h2>
+            <div className='flex w-full justify-between items-center'>
+                <motion.h2
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.5 }}
+                    viewport={{ once: true }}
+                    className="text-2xl font-semibold mb-4"
+                >
+                    {t("common.Popular Audio")}
+                </motion.h2>
+                <Link href="/books" className={` flex items-center justify-center gap-1.5 text-black text-lg hover:text-gray-700 transition-colors`}>
+                    {t('common.More')}
+                    <FiArrowRight className={`${isRTL ? 'rotate-y-180' : ''} mb-1`} />
+                </Link>
+            </div>
 
             <Carousel
                 itemsPerView={{ default: 1, xs: 2, sm: 3, md: 4, lg: 5, xl: 5, xxl: 6 }}
                 // gap={{ default: 6, xs: 8, sm: 12, md: 16, lg: 20, xl: 30, xxl: 60 }}
             >
                 {Mock.map((m) => (
-                    <div key={m.id} className="flex flex-col gap-2 cursor-grab h- max-w-60 active:cursor-grabbing bg-[#F0F0F0] pt-2 pb-4 px-3 sm:px-6 rounded">
+                    <div key={m.id} className="flex flex-col gap-2 cursor-grab max-w-60 active:cursor-grabbing bg-[#F0F0F0] pt-2 pb-4 px-3 sm:px-6 rounded">
                         <Image
                             width={100}
                             height={100}

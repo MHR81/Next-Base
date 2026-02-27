@@ -9,9 +9,11 @@ import Albert_Camus from '../images/Albert_Camus.png';
 import Victor_Marie_Hugo from '../images/Victor_Marie_Hugo.png';
 import BookReader from "@/_components/BookReader";
 import { useState } from 'react';
+import Link from 'next/link';
+import { FiArrowRight } from "react-icons/fi";
 
 export default function Popular_Authors() {
-    const { t } = useLanguages();
+    const { isRTL, t } = useLanguages();
     const [progress, setProgress] = useState(null);
 
     const Mock = [
@@ -31,15 +33,21 @@ export default function Popular_Authors() {
             transition={{ duration: 0.6 }}
             viewport={{ once: true, margin: "-100px" }}
         >
-            <motion.h2
-                className="text-2xl w-full text-starrt font-semibold mb-4"
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5 }}
-                viewport={{ once: true }}
-            >
-                {t("common.Popular Authors")}
-            </motion.h2>
+            <div className='flex w-full justify-between items-center'>
+                <motion.h2
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.5 }}
+                    viewport={{ once: true }}
+                    className="text-2xl font-semibold mb-4"
+                >
+                    {t("common.Popular Authors")}
+                </motion.h2>
+                <Link href="/authors" className={` flex items-center justify-center gap-1.5 text-black text-lg hover:text-gray-700 transition-colors`}>
+                    {t('common.More')}
+                    <FiArrowRight className={`${isRTL ? 'rotate-y-180' : ''} mb-1`} />
+                </Link>
+            </div>
             <motion.div
                 className="w-full"
                 initial={{ opacity: 0, scale: 0.9 }}

@@ -12,6 +12,7 @@ import Link from "next/link";
 import google from "@/_assets/SVGs/gooogle.svg";
 import Image from "next/image";
 import { setToken } from "@/redux/slices/authSlice";
+import { showToast } from "@/redux/slices/toastSlice";
 
 export default function Login() {
     const { t } = useLanguages();
@@ -62,6 +63,7 @@ export default function Login() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        dispatch(showToast({ message: "test toast.....", type: "info" }));
         if (validateForm(formData)) {
             handleLogin();
         }
