@@ -72,7 +72,6 @@ export const FileInput = forwardRef(({
             className={className}
         >
             <div className="space-y-3">
-                {/* Drop Zone */}
                 <label
                     className={cn(
                         'flex flex-col items-center justify-center gap-2',
@@ -109,7 +108,6 @@ export const FileInput = forwardRef(({
                     </span>
                 </label>
 
-                {/* File List */}
                 {files.length > 0 && (
                     <div className="space-y-2">
                         {files.map((file, index) => (

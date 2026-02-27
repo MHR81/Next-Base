@@ -37,7 +37,6 @@ const BookCard = ({ book, index }) => {
                 whileHover={{ y: -8, transition: { duration: 0.2 } }}
                 className="group cursor-pointer"
             >
-                {/* Cover Container */}
                 <div className={`
         relative bg-white rounded-2xl p-4 shadow-sm border border-gray-100 
         hover:shadow-lg hover:border-orange-200 transition-all duration-300

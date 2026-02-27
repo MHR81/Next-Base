@@ -29,7 +29,7 @@ export const PhoneInput = forwardRef(({
     defaultValue,
     defaultCountry = 'IR',
     countries = defaultCountries,
-    countriesVariant = 'custom2',
+    countriesVariant = 'custom',
     searchable = true,
     size = 'md',
     variant,
@@ -140,8 +140,8 @@ export const PhoneInput = forwardRef(({
                     disabled={disabled}
                     className={cn(
                         'flex items-center gap-2 px-3 border-r-0 rounded-r-none',
-                        'bg-gray-50 dark:bg-gray-800 border border-gray-300 dark:border-gray-600',
-                        'hover:bg-gray-100 dark:hover:bg-gray-700',
+                        'bg-input dark:bg-gray-800 border border-gray-300 dark:border-gray-600',
+                        'hover:bg-input dark:hover:bg-gray-700',
                         'focus:outline-none focus:ring-2 focus:ring-accent/20 focus:border-accent',
                         'disabled:opacity-50 disabled:cursor-not-allowed',
                         size === 'sm' && 'h-8 text-xs',

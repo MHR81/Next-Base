@@ -4,7 +4,6 @@ import AwardSection from "./_components/sections/Award";
 import Popular_Audio from "./_components/sections/Popular_Audio";
 import Popular_Authors from "./_components/sections/Popular_Authors";
 
-// import bishoori from '@/_assets/bishoori.pdf'
 
 export default function landingPage() {
 

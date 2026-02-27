@@ -1,7 +1,7 @@
 export const metadata = {
     title: 'Books',
     description: 'Browse books and collections.',
-    metadataBase: new URL(process.env.API_BASE_URL),
+    // metadataBase: new URL(process.env.API_BASE_URL),
     openGraph: {
         title: 'Books',
         description: 'Browse books and collections.',

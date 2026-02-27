@@ -10,7 +10,6 @@ const useBookReader = ({ initialPage = 1, onPageChange }) => {
     const [error, setError] = useState(null);
     const [isMobile, setIsMobile] = useState(false);
 
-    // تشخیص موبایل
     useEffect(() => {
         const checkMobile = () => {
             setIsMobile(window.innerWidth < 768);
@@ -24,7 +23,6 @@ const useBookReader = ({ initialPage = 1, onPageChange }) => {
     const setNumPagesAndInit = useCallback((pages) => {
         setNumPages(pages);
         setIsLoading(false);
-        // اگه صفحه اولیه بیشتر از تعداد صفحات بود، اصلاحش کن
         if (initialPage > pages) {
             setCurrentPage(1);
         }
@@ -38,14 +36,12 @@ const useBookReader = ({ initialPage = 1, onPageChange }) => {
     }, [numPages, onPageChange]);
 
     const goNext = useCallback(() => {
-        // در حالت دسکتاپ (دو صفحه‌ای)، دو تا دو تا برو جلو
         const step = (!isMobile && currentPage > 1) ? 2 : 1;
         const nextPage = Math.min(currentPage + step, numPages || 1);
         goToPage(nextPage);
     }, [currentPage, numPages, isMobile, goToPage]);
 
     const goPrev = useCallback(() => {
-        // در حالت دسکتاپ، دو تا دو تا برو عقب
         const step = (!isMobile && currentPage > 2) ? 2 : 1;
         const prevPage = Math.max(currentPage - step, 1);
         goToPage(prevPage);

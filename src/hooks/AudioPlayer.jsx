@@ -33,7 +33,6 @@ export default function AudioPlayer({
     const [isDragging, setIsDragging] = useState(false);
     const [rotation, setRotation] = useState(0);
 
-    // لود شدن audio
     useEffect(() => {
         const audio = audioRef.current;
         if (!audio) return;
@@ -65,7 +64,6 @@ export default function AudioPlayer({
         };
     }, [audioSrc, isDragging, onEnded]);
 
-    // چرخش پیوسته با requestAnimationFrame
     useEffect(() => {
         let animationId;
 
@@ -85,7 +83,6 @@ export default function AudioPlayer({
         };
     }, [isPlaying]);
 
-    // کنترل play/pause
     const togglePlay = () => {
         const audio = audioRef.current;
         if (!audio) return;
@@ -131,7 +128,6 @@ export default function AudioPlayer({
     const handleMouseUp = () => {
         if (isDragging && audioRef.current) {
             const audio = audioRef.current;
-            // ensure duration present
             if (duration && !isNaN(duration) && isFinite(duration) && duration > 0) {
                 const clamped = Math.max(0, Math.min(duration, currentTime));
                 audio.currentTime = clamped;
@@ -187,7 +183,6 @@ export default function AudioPlayer({
                         </h3>
                     </div>
 
-                    {/* Progress Bar */}
                     <div className="flex items-center gap-3 mb-3">
                         <span className="text-gray-600 text-sm font-medium w-10 text-right">
                             {formatTime(currentTime)}
@@ -199,13 +194,11 @@ export default function AudioPlayer({
                             onMouseDown={handleMouseDown}
                             className="flex-1 h-1.5 bg-gray-200 rounded-full cursor-pointer relative group"
                         >
-                            {/* Progress Fill */}
                             <div
                                 className="absolute left-0 top-0 h-full bg-[#F4A261] rounded-full"
                                 style={{ width: `${progressPercent}%` }}
                             />
 
-                            {/* Thumb */}
                             <div
                                 className="absolute top-1/2 -translate-y-1/2 w-4 h-4 bg-[#F4A261] rounded-full shadow-md opacity-0 group-hover:opacity-100 transition-opacity"
                                 style={{ left: `calc(${progressPercent}% - 8px)` }}
@@ -217,9 +210,7 @@ export default function AudioPlayer({
                         </span>
                     </div>
 
-                    {/* Control Buttons */}
                     <div className="flex items-center justify-center gap-4">
-                        {/* Previous */}
                         <motion.button
                             whileHover={{ scale: 1.1 }}
                             whileTap={{ scale: 0.95 }}
@@ -229,7 +220,6 @@ export default function AudioPlayer({
                             <SkipBack size={18} />
                         </motion.button>
 
-                        {/* Play/Pause */}
                         <motion.button
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
@@ -243,7 +233,6 @@ export default function AudioPlayer({
                             )}
                         </motion.button>
 
-                        {/* Next */}
                         <motion.button
                             whileHover={{ scale: 1.1 }}
                             whileTap={{ scale: 0.95 }}

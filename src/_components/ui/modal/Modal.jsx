@@ -119,7 +119,6 @@ export const Modal = ({
 
     const modal = (
         <>
-            {/* Overlay */}
             <div
                 className={cn(
                     'fixed inset-0 z-40 bg-black/50 backdrop-blur-sm',
@@ -130,7 +129,6 @@ export const Modal = ({
                 aria-hidden="true"
             />
 
-            {/* Content */}
             <div
                 ref={contentRef}
                 role="dialog"
@@ -148,7 +146,6 @@ export const Modal = ({
                     className
                 )}
             >
-                {/* Header */}
                 {(title || showClose) && (
                     <div className="flex items-center justify-between px-6 py-4 border-b border-gray-200 dark:border-gray-700">
                         {title && (
@@ -174,12 +171,10 @@ export const Modal = ({
                     </div>
                 )}
 
-                {/* Body */}
                 <div className="flex-1 overflow-y-auto px-6 py-4">
                     {children}
                 </div>
 
-                {/* Actions */}
                 {actions.length > 0 && (
                     <div className="flex items-center justify-end gap-3 px-6 py-4 border-t border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800/50 rounded-b-xl">
                         {actions.map((action, i) => (

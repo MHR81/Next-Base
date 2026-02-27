@@ -114,7 +114,9 @@
         "tryAgainLater": "لطفاً بعداً دوباره تلاش کنید.",
         "unexpectedError": "خطای غیرمنتظره‌ای رخ داد.",
         "errorDetails": "جزئیات خطا",
-        "confirm": "تایید"
+        "confirm": "تایید",
+        "mobile": "موبایل",
+        "mobile_number": "شماره موبایل"
     },
 
     "home": {

@@ -22,7 +22,6 @@ export default function GlobalAudioPlayer() {
     const [rotation, setRotation] = useState(0);
     const [isDragging, setIsDragging] = useState(false);
 
-    // لود شدن audio
     useEffect(() => {
         const audioElement = audioRef.current;
         if (!audioElement) return;
@@ -53,7 +52,6 @@ export default function GlobalAudioPlayer() {
         };
     }, [audio.audioSrc, isDragging, dispatch, audio]);
 
-    // چرخش پیوسته
     useEffect(() => {
         let animationId;
 
@@ -73,7 +71,6 @@ export default function GlobalAudioPlayer() {
         };
     }, [audio.isPlaying]);
 
-    // play/pause synchronize
     useEffect(() => {
         const audioElement = audioRef.current;
         if (!audioElement) return;
@@ -127,13 +124,10 @@ export default function GlobalAudioPlayer() {
                     dir="ltr"
                     className="fixed bottom-4 right-4 z-50 w-96 max-w-[calc(100vw-2rem)] rounded-full shadow-2xl"
                 >
-                    {/* Audio Element */}
                     <audio ref={audioRef} src={audio.audioSrc} preload="metadata" />
 
-                    {/* Player Container */}
                     <div className="flex items-center gap-4 bg-white/60 backdrop-blur-[2px] opacity-90 rounded-full px-3 py-2 border border-gray-200">
 
-                        {/* Cover Image (Disc) */}
                         <div
                             style={{
                                 transform: `rotate(${rotation}deg)`,
@@ -144,18 +138,16 @@ export default function GlobalAudioPlayer() {
                             <DiscImage
                                 src={audio.coverImage}
                                 size={70}
-                                holeSize={18}
+                                holeSize={14}
                                 halo={true}
-                                haloPadding={8}
+                                haloPadding={6}
                                 shadow={false}
                                 border={false}
                                 boxed={false}
                             />
                         </div>
 
-                        {/* Info & Controls */}
                         <div className="flex-1 min-w-0">
-                            {/* Title & Author */}
                             <div className="mb-1">
                                 <h3 className="text-gray-900 font-semibold text-sm truncate">
                                     {audio.title}
@@ -163,7 +155,6 @@ export default function GlobalAudioPlayer() {
                                 </h3>
                             </div>
 
-                            {/* Progress Bar */}
                             <div className="flex items-center gap-2 mb-2">
                                 <span className="text-gray-600 text-xs font-medium w-8 text-right">
                                     {formatTime(audio.currentTime)}
@@ -184,7 +175,6 @@ export default function GlobalAudioPlayer() {
                                 </span>
                             </div>
 
-                            {/* Control Buttons */}
                             <div className="flex items-center justify-center gap-2">
                                 <button
                                     onClick={audio.onPrevious}
@@ -211,7 +201,6 @@ export default function GlobalAudioPlayer() {
                                     <SkipForward size={16} />
                                 </button>
 
-                                {/* Close Button */}
                                 <button
                                     onClick={handleClose}
                                     className="w-6 h-6 rounded-full flex items-center justify-center text-gray-500 hover:text-gray-800 hover:bg-gray-100 transition-colors ml-1"

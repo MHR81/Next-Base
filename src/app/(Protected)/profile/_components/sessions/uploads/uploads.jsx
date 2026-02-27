@@ -73,11 +73,10 @@ const BookCard = ({ book, index, type }) => {
             className="bg-white rounded-2xl p-5 border border-orange-100 shadow-sm hover:shadow-md transition-shadow"
         >
             <div className="flex gap-5">
-                {/* Book Cover */}
                 <div className="shrink-0">
                     <div className={cn(type === 'audio' ? "" : "w-28 h-40 rounded-xl overflow-hidden shadow-md")}>
                         {type === 'audio' ? (
-                            <DiscImage haloPadding={10} src={book.cover} alt={book.title} />
+                            <DiscImage haloPadding={10} holeSize={25} src={book.cover} alt={book.title} />
                         ) : (
                             <Image
                                 width={100}
@@ -90,9 +89,7 @@ const BookCard = ({ book, index, type }) => {
                     </div>
                 </div>
 
-                {/* Content */}
                 <div className="flex-1 min-w-0">
-                    {/* Header */}
                     <div className="flex items-start justify-between mb-2">
                         <div className="flex items-center gap-2 flex-wrap">
                             <h3 className="text-gray-900 font-bold text-base">
@@ -110,10 +107,8 @@ const BookCard = ({ book, index, type }) => {
                         </span>
                     </div>
 
-                    {/* Category */}
                     <p className="text-gray-400 text-xs mb-3">{book.category}</p>
 
-                    {/* Description */}
                     <p className="text-gray-500 text-sm leading-6">
                         {expanded ? book.description : book.description.slice(0, 120)}
                         {!expanded && book.description.length > 120 && '...'}
@@ -213,7 +208,6 @@ export default function BooksList() {
 
                     </div>
 
-                    {/* Books List */}
                     <div className="space-y-4 mt-20">
                         <AnimatePresence>
                             {filteredBooks.map((book, index) => (
@@ -222,7 +216,6 @@ export default function BooksList() {
                         </AnimatePresence>
                     </div>
 
-                    {/* Empty State */}
                     {filteredBooks.length === 0 && (
                         <motion.div
                             initial={{ opacity: 0 }}

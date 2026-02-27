@@ -12,6 +12,7 @@ import book4 from '../images/book4.png';
 import { HiOutlineMicrophone } from "react-icons/hi";
 import { FiArrowRight } from "react-icons/fi";
 import Link from 'next/link';
+import { DiscImage } from '@/hooks/useDiscImage';
 
 
 export default function Popular_Audio() {
@@ -65,11 +66,11 @@ export default function Popular_Audio() {
 
             <Carousel
                 itemsPerView={{ default: 1, xs: 2, sm: 3, md: 4, lg: 5, xl: 5, xxl: 6 }}
-                // gap={{ default: 6, xs: 8, sm: 12, md: 16, lg: 20, xl: 30, xxl: 60 }}
+            // gap={{ default: 6, xs: 8, sm: 12, md: 16, lg: 20, xl: 30, xxl: 60 }}
             >
                 {Mock.map((m) => (
                     <div key={m.id} className="flex flex-col gap-2 cursor-grab max-w-60 active:cursor-grabbing bg-[#F0F0F0] pt-2 pb-4 px-3 sm:px-6 rounded">
-                        <Image
+                        {/* <Image
                             width={100}
                             height={100}
                             src={m.image}
@@ -77,7 +78,17 @@ export default function Popular_Audio() {
                             draggable={false}
                             onDragStart={(e) => e.preventDefault()}
                             className="object-cover h-60 w-full rounded"
-                        />
+                        /> */}
+                        <div className='pb-5 pt-2'>
+                            <DiscImage
+                                size={150}
+                                holeSize={25}
+                                haloPadding={8}
+                                src={m.image}
+                                alt={m.label}
+                                boxed={false}
+                            />
+                        </div>
                         <div className="flex flex-col gap-0.5 justify-center w-full items-center text-center">
                             <div className='flex gap-2'>
                                 <h5 className='w-full'>{m.label}</h5>

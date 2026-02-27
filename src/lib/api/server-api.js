@@ -1,6 +1,7 @@
 import { cookies } from 'next/headers';
 
-const BASE_URL = process.env.API_BASE_URL || "http://192.168.70.194:3002/api";
+const BASE_URL =  "http://192.168.70.194:3002/api";
+// process.env.API_BASE_URL ||
 
 export async function serverFetch(
   endpoint,

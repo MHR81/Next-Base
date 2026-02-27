@@ -38,7 +38,7 @@ export const labelVariants = cva(
 
 export const inputFieldVariants = cva(
     [
-        'w-full bg-white dark:bg-gray-900 border transition-all duration-200',
+        'w-full bg-input border transition-all duration-200',
         'placeholder:text-gray-400 dark:placeholder:text-gray-500',
         'focus:outline-none focus:ring-2 focus:ring-offset-0',
         'disabled:opacity-50 disabled:cursor-not-allowed disabled:bg-gray-50 dark:disabled:bg-gray-800',

@@ -21,7 +21,6 @@ import { DropZone } from '@/_components/ui/DropZone/DropZone';
 // );
 
 
-// Note: textarea handled via <FormInput type="textarea" />
 
 export const PdfBookForm = ({ onSubmit, onBack }) => {
     const MOCK_CATEGORY = [

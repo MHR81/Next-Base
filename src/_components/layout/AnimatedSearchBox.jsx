@@ -63,7 +63,6 @@ export default function AnimatedSearchBox({ scrollY, variant = 'banner' }) {
     if (variant === 'header') {
         return (
             <>
-                {/* Desktop / sm+ animated header search (shows on scroll) */}
                 <motion.div
                     className={`hidden sm:block absolute ${isRTL ? 'translate-x-1/2 right-1/2' : '-translate-x-1/2 left-1/2'
                         } flex-1 ms-10 sm:ms-0 sm:w-xs md:w-sm md:max-w-lg`}
@@ -90,7 +89,6 @@ export default function AnimatedSearchBox({ scrollY, variant = 'banner' }) {
                     </div>
                 </motion.div>
 
-                {/* Mobile: always-visible header search (below sm) */}
                 <div className="sm:hidden w-full px-4">
                     <div className="relative">
                         <input

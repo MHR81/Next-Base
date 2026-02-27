@@ -43,7 +43,7 @@ const BookReader = ({
                 setPages(p.numPages || 0);
                 console.debug("BookReader: setPdf -> pages", p.numPages);
             } catch (e) {
-                // fail silently for now
+                // 
             }
         };
         load();

@@ -61,8 +61,7 @@
         "new password": "New Password",
         "confirm password": "Confirm Password",
         "must be 4 digits": "Must be 4 digits",
-        "update password": "Update Password"
-        ,
+        "update password": "Update Password",
         "no_results_found": "No results found",
         "clear_search": "Clear search",
         "search_countries": "Search countries...",
@@ -79,8 +78,7 @@
         },
         "upload_files": "Upload files",
         "upload_file": "Upload file",
-        "click_or_drag": "Click or drag here"
-        ,
+        "click_or_drag": "Click or drag here",
         "no_data_available": "No data available",
         "loading": "Loading...",
         "drop_drag": "drop & drag",
@@ -88,8 +86,7 @@
         "or": "or",
         "browse": "browse",
         "file_on_your_computer": "file on your computer",
-        "edit_photo": "edit photo"
-        ,
+        "edit_photo": "edit photo",
         "close": "Close",
         "previous_slide": "Previous slide",
         "next_slide": "Next slide",
@@ -114,7 +111,9 @@
         "tryAgainLater": "Please try again later.",
         "unexpectedError": "An unexpected error has occurred.",
         "errorDetails": "Error Details",
-        "confirm": "Confirm"
+        "confirm": "Confirm",
+        "mobile": "mobile",
+        "mobile_number": "mobile number"
     },
     "home": {
         "academic&educational": "Academic & Educational",
@@ -143,8 +142,7 @@
     "homeBanner": {
         "title": "A Library in Your Pocket",
         "subtitle": "ready when you are"
-    }
-    ,
+    },
     "footer": {
         "brand": "Taghche",
         "taghche": {
@@ -165,8 +163,7 @@
         "account_email_placeholder": "*****@gmail.com",
         "copyright_prefix": "©",
         "copyright_suffix": "All rights reserved."
-    }
-    ,
+    },
     "rulesModal": {
         "introduction": {
             "title": "Introduction",

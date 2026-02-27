@@ -29,11 +29,10 @@ export default function AudioPlayer({
         });
     };
 
-    // اگر به یک دکمه نیاز داری برای تست
     return (
         <button
             onClick={handlePlay}
-            className="flex justify-center items-center text-center ps-3.5 pe-2.5 pt-1 pb-0 bg-orange-400 text-white rounded-lg hover:bg-orange-500 transition-colors font-medium"
+            className="flex justify-center items-center text-center px-3 pt-1 pb-0 bg-orange-400 text-white rounded-lg hover:bg-orange-500 transition-colors font-medium"
         >
             ▶
         </button>

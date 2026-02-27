@@ -51,7 +51,6 @@ export default function NotFound() {
                     </motion.h1>
                 </motion.div>
 
-                {/* Content */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -90,7 +89,6 @@ export default function NotFound() {
                     </div>
                 </motion.div>
 
-                {/* Decorative elements */}
                 <div className="absolute top-20 left-10 w-20 h-20 bg-[#F4A261]/5 rounded-full blur-xl" />
                 <div className="absolute bottom-20 right-10 w-32 h-32 bg-[#F4A261]/5 rounded-full blur-xl" />
             </motion.div>

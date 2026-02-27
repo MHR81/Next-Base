@@ -16,4 +16,6 @@ export default async function BooksPage() {
         console.error("Error fetching books:", err);
         throw err;
     }
+
+    // <BookList />
 }

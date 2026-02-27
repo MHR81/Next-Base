@@ -5,8 +5,10 @@ import { removeToken } from "@/redux/slices/authSlice";
 import { showToast } from "@/redux/slices/toastSlice";
 import { toastIgnore } from "./toastIgnore";
 import Cookies from "js-cookie";
+import { store } from "@/redux/store";
 
-const BASE_URL = import.meta.env.API_BASE_URL || "http://192.168.70.194:3002/api";
+const BASE_URL =  "http://localhost:3000/api";
+// import.meta.env.API_BASE_URL ||
 const TIMEOUT = 600000;
 
 axios.defaults.baseURL = BASE_URL;

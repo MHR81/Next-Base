@@ -41,14 +41,12 @@ const NotificationCard = ({ notification, index }) => (
         transition={{ delay: index * 0.08, duration: 0.4 }}
         className="flex items-center gap-5 bg-white rounded-lg p-5 border border-accent/90 shadow-sm hover:shadow-md transition-shadow"
     >
-        {/* Logo */}
         <div className="shrink-0">
             <span className="text-2xl font-serif italic text-gray-800 tracking-tight">
                 Thaghche
             </span>
         </div>
 
-        {/* Content */}
         <div className="flex-1 min-w-0">
             <h3 className="text-gray-900 font-semibold text-base mb-1">
                 {notification.title}

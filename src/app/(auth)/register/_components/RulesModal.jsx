@@ -49,7 +49,6 @@ export default function RulesModal({ isOpen, onClose }) {
     return (
         <AnimatePresence>
             <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
-                {/* Backdrop */}
                 <motion.div
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
@@ -58,23 +57,19 @@ export default function RulesModal({ isOpen, onClose }) {
                     className="absolute inset-0 bg-black/30 backdrop-blur-sm"
                 />
 
-                {/* Modal */}
                 <motion.div
                     initial={{ opacity: 0, scale: 0.95, y: 20 }}
                     animate={{ opacity: 1, scale: 1, y: 0 }}
                     exit={{ opacity: 0, scale: 0.95, y: 20 }}
                     className="relative w-full max-w-lg bg-white rounded-2xl shadow-2xl overflow-hidden"
                 >
-                    {/* Content */}
                     <div className="p-6 pb-4 max-h-[70vh] overflow-y-auto">
                         {rulesData.map((section, index) => (
                             <div key={index} className="mb-5 last:mb-0">
-                                {/* Section Title */}
                                 <h3 className="text-teal-500 text-sm font-medium mb-2">
                                     {section.title}
                                 </h3>
 
-                                {/* Content or Items */}
                                 {section.content ? (
                                     <p className="text-gray-600 text-sm leading-relaxed">
                                         {section.content}
@@ -93,12 +88,10 @@ export default function RulesModal({ isOpen, onClose }) {
                         ))}
                     </div>
 
-                    {/* Triangle Pointer */}
                     <div className="absolute -bottom-3 left-1/2 -translate-x-1/2">
                         <div className="w-6 h-6 bg-white rotate-45 shadow-lg" />
                     </div>
 
-                    {/* Close button (optional) */}
                     <button
                         onClick={onClose}
                         className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 transition-colors"
@@ -107,7 +100,6 @@ export default function RulesModal({ isOpen, onClose }) {
                     </button>
                 </motion.div>
 
-                {/* Note below modal */}
                 <motion.p
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}

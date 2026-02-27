@@ -28,7 +28,6 @@ export default function Footer() {
     const [showScrollTop, setShowScrollTop] = useState(false);
     const { t } = useLanguages();
 
-    // چک کردن اسکرول برای نمایش دکمه
     useEffect(() => {
         const handleScroll = () => {
             setShowScrollTop(window.scrollY > 300);
@@ -38,7 +37,6 @@ export default function Footer() {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
-    // اسکرول به بالا
     const scrollToTop = () => {
         window.scrollTo({
             top: 0,
@@ -48,13 +46,10 @@ export default function Footer() {
 
     return (
         <footer className="relative bg-white pt-16 w-full pb-8 mt-20">
-            {/* Top Border with Arrow Button */}
             <div className="absolute top-0 left-0 right-0">
                 <div className="max-w-6xl mx-auto px-6 relative">
-                    {/* Line */}
                     <div className="border-t border-gray-200" />
 
-                    {/* Arrow Button */}
                     <motion.button
                         onClick={scrollToTop}
                         initial={{ opacity: 0, y: 20 }}
@@ -77,11 +72,9 @@ export default function Footer() {
                 </div>
             </div>
 
-            {/* Footer Content */}
             <div className="max-w-6xl mx-auto px-6 pt-12">
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-12">
 
-                    {/* Logo */}
                     <div className="flex justify-center items-center sm:col-span-2 lg:col-span-1">
                         <span
                             className="text-5xl font-serif italic text-gray-800 tracking-tight"
@@ -91,7 +84,6 @@ export default function Footer() {
                         </span>
                     </div>
 
-                    {/* Taghche Links */}
                     <div className='self-end'>
                         <h4 className="text-gray-900 font-semibold text-base mb-4">
                             {t('footer.taghche.title')}
@@ -110,7 +102,6 @@ export default function Footer() {
                         </ul>
                     </div>
 
-                    {/* Contact */}
                     <div>
                         <h4 className="text-gray-900 font-semibold text-base mb-4">
                             {t('footer.contact.title')}
@@ -125,7 +116,6 @@ export default function Footer() {
                         </ul>
                     </div>
 
-                    {/* Download */}
                     <div>
                         <h4 className="text-gray-900 font-semibold text-base mb-4">
                             {t('footer.download.title')}
@@ -146,7 +136,6 @@ export default function Footer() {
                         </a>
                     </div>
 
-                    {/* Account */}
                     <div className="sm:col-span-2 lg:col-span-1">
                         <h4 className="text-gray-900 font-semibold text-base mb-4">
                             {t('footer.account')}
@@ -157,7 +146,6 @@ export default function Footer() {
                     </div>
                 </div>
 
-                {/* Bottom Border */}
                 <div className="mt-12 pt-6 border-t border-gray-100">
                     <p className="text-center text-gray-400 text-xs">
                         {t('footer.copyright_prefix')} {new Date().getFullYear()} {t('footer.brand')}. {t('footer.copyright_suffix')}

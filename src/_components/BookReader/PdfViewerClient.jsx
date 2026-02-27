@@ -5,7 +5,6 @@ import { Document, Page, pdfjs } from 'react-pdf';
 import PageView from './PageView';
 import './react-pdf-layers.css';
 
-// configure worker on client where Document/Page are used
 pdfjs.GlobalWorkerOptions.workerSrc = `https://unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.mjs`;
 
 const PdfViewerClient = ({

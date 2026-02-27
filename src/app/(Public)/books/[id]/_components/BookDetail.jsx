@@ -99,13 +99,11 @@ export default function BookDetail({ data }) {
     return (
         <div className="min-h-screen bg-white py-8  md:p-12">
             <div className="max-w-6xl mx-auto">
-                {/* Book Info Section */}
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
                     className="flex flex-col md:flex-row gap-10 mb-16"
                 >
-                    {/* Book Cover */}
                     <motion.div
                         initial={{ opacity: 0, scale: 0.9 }}
                         animate={{ opacity: 1, scale: 1 }}
@@ -113,11 +111,7 @@ export default function BookDetail({ data }) {
                         className="md:shrink-0 flex items-center md:items-start justify-center"
                     >
 
-                        {bookData?.type === "podcast" ? (
-                            // <div className="w-56 h-56 rounded-xl overflow-hidden shadow-xl">
-                            <DiscImage size={220} holeSize={30} src={bookData?.image?.path || book1} alt={bookData?.title || "Podcast Cover"} />
-                            // </div>
-                        ) : (
+                        {bookData?.type === "book" ? (
                             <div className="w-56 h-80 rounded-xl overflow-hidden shadow-xl">
                                 <Image
                                     width={100}
@@ -127,6 +121,8 @@ export default function BookDetail({ data }) {
                                     className="w-full h-full object-cover"
                                 />
                             </div>
+                        ) : (
+                                <DiscImage size={220} holeSize={30} src={bookData?.image?.path || book1} alt={bookData?.title || "Podcast Cover"} />
                         )}
 
                     </motion.div>
@@ -137,12 +133,10 @@ export default function BookDetail({ data }) {
                         transition={{ delay: 0.3 }}
                         className="flex-1 pt-2"
                     >
-                        {/* Rating */}
                         <div className="flex items-center gap-2 mb-3">
                             <StarRating rating={bookData.rating} size={20} />
                         </div>
 
-                        {/* Title & Author */}
                         <div className='flex gap-2 justify-start items-center'>
                             <h1 className="text-2xl font-bold text-gray-900 mb-1">{bookData?.title}</h1>
                             <div className="flex items-center gap-3 mb-4">
@@ -150,7 +144,6 @@ export default function BookDetail({ data }) {
                                 <span className="text-gray-400 text-sm">{bookData?.publisher}</span>
                             </div>
                         </div>
-                        {/* Action Buttons */}
                         <div className="flex flex-col lg:flex-row items-center gap-3 mb-6 w-full">
                             <div className='flex flex-col gap-2 self-start mt-3'>
                                 <span className='text-sm text-muted'>
@@ -162,7 +155,7 @@ export default function BookDetail({ data }) {
 
                                         <span className="text-sm font-medium">{bookData.type === "podcast" ? "Audio" : "Book"}</span>
                                     </button>
-                                    {bookData.type === "podcast" && (
+                                    {bookData.type !== "book" && (
                                         <AudioPlayerButton
                                             // className={`lg:ms-5 ${isRTL ? 'lg:me-5' : ''}`}
                                             audioSrc={"/testVoice.mp3"}
@@ -199,13 +192,11 @@ export default function BookDetail({ data }) {
                     </motion.div>
                 </motion.div>
 
-                {/* Comments Section */}
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.5 }}
                 >
-                    {/* Header */}
                     <div className="flex items-center justify-between mb-6">
                         <h2 className="text-lg font-bold text-gray-900">Comments</h2>
                         <button className="flex items-center gap-1 text-sm text-gray-600 hover:text-gray-900 transition-colors">
@@ -217,7 +208,6 @@ export default function BookDetail({ data }) {
                         </button>
                     </div>
 
-                    {/* Comments Grid */}
                     <div className="w-full mb-6">
                         <Carousel
                             itemsPerView={{ default: 1, sm: 1, md: 2, lg: 3, xl: 4, xxl: 4 }}
@@ -230,7 +220,6 @@ export default function BookDetail({ data }) {
                                     key={comment.id}
                                     className="flex flex-col gap-2 cursor-grab active:cursor-grabbing rounded-lg p-5 border border-accent shadow-sm"
                                 >
-                                    {/* Header */}
                                     <div className="flex items-start justify-between mb-3">
                                         <div className="flex items-center gap-3">
                                             <Image
@@ -253,7 +242,6 @@ export default function BookDetail({ data }) {
                                         <span className="text-xs text-gray-400">{comment.date}</span>
                                     </div>
 
-                                    {/* Text */}
                                     <p className="text-gray-500 text-xs leading-5 mb-4 line-clamp-4">
                                         {comment.text}
                                         <button className="text-orange-400 hover:text-orange-500 ml-1 font-medium">
@@ -261,7 +249,6 @@ export default function BookDetail({ data }) {
                                         </button>
                                     </p>
 
-                                    {/* Actions */}
                                     <div className="flex items-center gap-4">
                                         <button
                                             onClick={() => setLiked(!liked)}

@@ -88,7 +88,6 @@ const MobileNavItem = ({ icon: Icon, label, active, onClick }) => (
 //                     ))}
 //                 </div>
 
-//                 {/* Logout */}
 //                 <div className="border-t border-gray-100 p-4">
 
 //                 </div>
@@ -166,10 +165,8 @@ export default function ProfileSidebar({ activeTab, setActiveTab }) {
 
 
             <div className="lg:hidden fixed top-0 left-0 right-0 z-40">
-                {/* Header with Profile */}
                 <div className="bg-white/95 backdrop-blur-md border-b border-gray-100 px-4 py-3">
                     <div className="flex items-center justify-between">
-                        {/* Profile Info */}
                         <div className="flex items-center gap-3">
                             <div className="w-10 h-10 rounded-full overflow-hidden border border-gray-200">
                                 <Image
@@ -188,7 +185,6 @@ export default function ProfileSidebar({ activeTab, setActiveTab }) {
                             </div>
                         </div>
 
-                        {/* Menu Button */}
                         {/* <button
               onClick={() => setShowMobileMenu(!showMobileMenu)}
               className="p-2 rounded-xl bg-gray-50 hover:bg-gray-100 transition-colors"
@@ -224,7 +220,6 @@ export default function ProfileSidebar({ activeTab, setActiveTab }) {
 
             <div className="lg:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-gray-100 px-2 py-2 z-40">
                 <div className="flex items-center justify-around">
-                    {/* Main tabs (first 4) */}
                     {navItems.slice(0, 4).map((item) => (
                         <MobileNavItem
                             key={item.id}

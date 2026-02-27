@@ -14,7 +14,7 @@ export const useDiscImage = (imageUrl, options = {}) => {
 
     const {
         halo = true,
-        haloPadding = 18,
+        haloPadding = 12,
         haloColor = 'rgba(255,255,255,0.4)'
     } = options;
 
@@ -42,7 +42,6 @@ export const useDiscImage = (imageUrl, options = {}) => {
         boxShadow: shadow
             ? '0 4px 15px rgba(0,0,0,0.15), inset 0 0 20px rgba(0,0,0,0.1)'
             : 'none',
-        // مهم: برای چرخش صحیح
         display: 'block',
         flexShrink: 0,
     }), [imageSrc, size, shadow]);
@@ -88,7 +87,6 @@ export const useDiscImage = (imageUrl, options = {}) => {
         border: boxed && border
             ? '1px solid rgba(0,0,0,0.05)'
             : 'none',
-        // مهم: برای چرخش صحیح
         lineHeight: 0,
         fontSize: 0,
     }), [borderRadius, shadow, border, boxed]);

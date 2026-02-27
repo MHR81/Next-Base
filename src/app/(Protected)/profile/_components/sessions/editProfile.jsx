@@ -17,7 +17,6 @@ export default function EditProfile() {
     const fileInputRef = useRef(null);
     const profile = useSelector((state) => state.user.data);
     const dispatch = useDispatch();
-    // console.log("user in dashboard client", profile);
 
     const [dial, setDial] = useState("98");
     const [formData, setFormData] = useState({
@@ -35,7 +34,6 @@ export default function EditProfile() {
 
     console.log("formData", formData);
 
-    // console.log("formData", formData);
 
     useEffect(() => {
         if (profile) {

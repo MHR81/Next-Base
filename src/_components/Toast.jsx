@@ -87,12 +87,9 @@ export default function Toast() {
             shadow-2xl shadow-black/10
             min-w-[320px] max-w-md
           `}>
-            {/* Glass shine effect */}
             <div className="absolute inset-0 bg-gradient-to-br from-white/20 via-transparent to-transparent pointer-events-none" />
             
-            {/* Content */}
             <div className="relative flex items-start gap-4 p-4">
-              {/* Icon */}
               <motion.div
                 initial={{ scale: 0, rotate: -180 }}
                 animate={{ scale: 1, rotate: 0 }}
@@ -102,14 +99,12 @@ export default function Toast() {
                 <Icon className="w-5 h-5 text-white" strokeWidth={2.5} />
               </motion.div>
 
-              {/* Message */}
               <div className="flex-1 min-w-0 pt-0.5">
                 <p className="text-white font-medium text-sm leading-relaxed break-words">
                   {typeof message === "string" ? message : message?.text || JSON.stringify(message)}
                 </p>
               </div>
 
-              {/* Close button */}
               <motion.button
                 whileHover={{ scale: 1.1, rotate: 90 }}
                 whileTap={{ scale: 0.9 }}
@@ -120,7 +115,6 @@ export default function Toast() {
               </motion.button>
             </div>
 
-            {/* Progress bar */}
             <div className="absolute bottom-0 left-0 right-0 h-1 bg-black/10">
               <motion.div
                 className="h-full bg-white/50"
@@ -129,7 +123,6 @@ export default function Toast() {
               />
             </div>
 
-            {/* Decorative glow */}
             <div className="absolute -top-20 -right-20 w-40 h-40 bg-white/10 rounded-full blur-3xl pointer-events-none" />
           </div>
         </motion.div>
